@@ -1,5 +1,5 @@
 {
-  "name": "react-stripe-checkout",
+  "name": "@theeventdiscoverycompany/react-stripe-checkout",
   "version": "2.6.3",
   "description": "Easily inject checkout.js as a react component. Will load the script on demand and supports all the options from stripe docs.",
   "main": "./dist/main.js",
@@ -87,7 +87,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/azmenak/react-stripe-checkout.git"
+    "url": "git+https://github.com/TheEventDiscoveryCompany/react-stripe-checkout.git"
   },
   "keywords": [
     "react",
@@ -97,12 +97,12 @@
     "loaded",
     "easy"
   ],
-  "author": "Adam Zmenak <adam.zmenak@gmail.com> (http://azmenak.com)",
+  "author": "The Event Discovery Company <contact@eventdiscovery.company>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/azmenak/react-stripe-checkout/issues"
+    "url": "https://github.com/TheEventDiscoveryCompany/react-stripe-checkout/issues"
   },
-  "homepage": "https://github.com/azmenak/react-stripe-checkout",
+  "homepage": "https://github.com/TheEventDiscoveryCompany/react-stripe-checkout#readme",
   "devDependencies": {
     "babel-cli": "^6.11.4",
     "babel-core": "^6.11.4",
