@@ -43,7 +43,8 @@ export default class ReactStripeCheckout extends React.Component {
     disabled: PropTypes.bool,
 
     // Named component to wrap button (eg. div)
-    ComponentClass: PropTypes.string,
+    // Or a component itself
+    ComponentClass: PropTypes.oneOfType(PropTypes.string, PropTypes.element),
 
     // Show a loading indicator
     showLoadingDialog: PropTypes.func,
