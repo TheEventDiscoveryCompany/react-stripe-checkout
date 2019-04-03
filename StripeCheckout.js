@@ -44,7 +44,12 @@ export default class ReactStripeCheckout extends React.Component {
 
     // Named component to wrap button (eg. div)
     // Or a component itself
-    ComponentClass: PropTypes.oneOfType(PropTypes.string, PropTypes.element),
+    // See: https://github.com/facebook/prop-types/issues/200#issuecomment-447754082
+    ComponentClass: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.string,
+      PropTypes.shape({render: PropTypes.func.isRequired}),
+    ]),
 
     // Show a loading indicator
     showLoadingDialog: PropTypes.func,
@@ -479,14 +484,26 @@ export default class ReactStripeCheckout extends React.Component {
 
     const { ComponentClass } = this.props;
     if (this.props.children) {
-      return (
-        <ComponentClass
-          {...{
-            [this.props.triggerEvent]: this.onClick,
-          }}
-          children={this.props.children}
-        />
-      );
+      // If the child is a react element, render it with the additional props
+      if (React.isValidElement(this.props.children)) {
+        return React.cloneElement(
+          this.props.children,
+          {
+            [this.props.triggerEvent]: this.onClick
+          }
+        )
+      }
+      // Otherwise wrap it in the component class
+      else {
+        return (
+          <ComponentClass
+            {...{
+              [this.props.triggerEvent]: this.onClick,
+            }}
+            children={this.props.children}
+          />
+        );
+      }
     }
     return this.props.disabled
       ? this.renderDisabledButton()
